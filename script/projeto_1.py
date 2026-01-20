@@ -10,7 +10,7 @@ caminho_excel = BASE_DIR.parent / "Vendas+-+Base+de+Dados.xlsx"
 
 tabela_vendas = pd.read_excel(caminho_excel)
 
-print(tabela_vendas.head())
+# print(tabela_vendas.head())
 
 #Calculando produto mais vendido (quantidade)
 
@@ -18,7 +18,7 @@ tabela_qtd_prod = tabela_vendas.groupby('Produto').sum()
 tabela_qtd_prod = tabela_qtd_prod[['Quantidade']]
 tabela_qtd_prod = tabela_qtd_prod.sort_values(by='Quantidade', ascending=False)
 
-print(tabela_qtd_prod)
+# print(tabela_qtd_prod)
 
 #calcular produto mais vendido (faturamento)
 
@@ -26,4 +26,12 @@ tabela_vendas['Faturamento'] = tabela_vendas['Quantidade'] * tabela_vendas['Valo
 tab_faturamento_prod = tabela_vendas.groupby('Produto').sum()
 tab_faturamento_prod = tab_faturamento_prod[['Faturamento']].sort_values(by='Faturamento', ascending=False)
 
-print(tab_faturamento_prod)
+# print(tab_faturamento_prod)
+
+#Calculando a loja/estado que mais vendeu
+tb_faturamento_loja = tabela_vendas.groupby('Loja').sum()
+tb_faturamento_loja = tb_faturamento_loja[['Faturamento']]
+tb_faturamento_loja = tb_faturamento_loja.sort_values(by='Faturamento', ascending=False)
+
+print(tb_faturamento_loja)
+
