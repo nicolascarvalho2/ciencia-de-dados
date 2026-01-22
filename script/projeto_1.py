@@ -33,5 +33,11 @@ tb_faturamento_loja = tabela_vendas.groupby('Loja').sum()
 tb_faturamento_loja = tb_faturamento_loja[['Faturamento']]
 tb_faturamento_loja = tb_faturamento_loja.sort_values(by='Faturamento', ascending=False)
 
-print(tb_faturamento_loja)
+# print(tb_faturamento_loja)
 
+#Calculando ticket medio por loja/estado
+
+tabela_vendas['Ticket Médio'] = tabela_vendas['Valor Unitário']
+tb_ticket_medio = tabela_vendas.groupby('Loja').mean(numeric_only=True)
+tb_ticket_medio = tb_ticket_medio[['Ticket Médio']].sort_values(by='Ticket Médio', ascending=False)
+print(tb_ticket_medio)
