@@ -40,4 +40,12 @@ tb_faturamento_loja = tb_faturamento_loja.sort_values(by='Faturamento', ascendin
 tabela_vendas['Ticket Médio'] = tabela_vendas['Valor Unitário']
 tb_ticket_medio = tabela_vendas.groupby('Loja').mean(numeric_only=True)
 tb_ticket_medio = tb_ticket_medio[['Ticket Médio']].sort_values(by='Ticket Médio', ascending=False)
-print(tb_ticket_medio)
+# print(tb_ticket_medio)
+
+#Construindo um dashboard usando plotly
+
+import plotly.express as px
+
+
+grafico = px.bar(tb_faturamento_loja, y='Faturamento', x=tb_faturamento_loja.index)
+grafico.show()
